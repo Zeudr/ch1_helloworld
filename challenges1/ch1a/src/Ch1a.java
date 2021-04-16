@@ -1,13 +1,16 @@
-import javax.management.Query;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class HelloWorld {
+public class Ch1a {
 
     public static void main(String[] args) {
+
+        String dbName = "ch1_helloworld";
+        String dbUser = "root";
+        String dbPw   = "admin";
 
         String firstname;
         String lastname;
@@ -26,7 +29,7 @@ public class HelloWorld {
         } while (lastname.equals(""));
 
         try {
-            Connection mysql = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ch1_helloworld", "root", "admin");
+            Connection mysql = DriverManager.getConnection(String.format("jdbc:mysql://127.0.0.1:3306/%s", dbName), dbUser, dbPw);
             Statement stmt = mysql.createStatement();
 
             String insertQuery = String.format("INSERT INTO Person(Firstname, Lastname) VALUES('%s', '%s');", firstname, lastname);
