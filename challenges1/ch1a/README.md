@@ -6,8 +6,8 @@ and fill them in Class 1a in... as DB_NAME, DB_USER and DB_PW
 
 # compile
 open terminal; cd into src folder
-run: javac ./src/Ch1a.java
+run: javac Main.java
 
 # run
 same terminal
-run: java -cp ../resources/mysql-connector-java-8.0.23.jar:. Ch1a
+run: java -cp ../lib/mysql-connector-java-8.0.23.jar:. Main
