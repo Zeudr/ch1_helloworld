@@ -4,7 +4,7 @@
 none
 
 # compile
-execute compile.sh
+execute script/compile.sh
 
 # run
-execute run.sh
+execute script/run.sh

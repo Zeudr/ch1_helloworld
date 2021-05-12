@@ -1,4 +1,7 @@
 # CH - 1A
+WAS IST DAS TEXT HIER !!!!!!!!
+
+chmod a+x 
 
 # requirements
 you need to know your local mysql connection parameters -> 
@@ -7,7 +10,7 @@ db-user,
 db-password)
 
 # compile
-execute compile.sh
+execute script/compile.sh
 
 # run
-execute run.sh
+execute script/run.sh

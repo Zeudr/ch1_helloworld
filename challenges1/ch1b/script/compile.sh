@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ln -s ../../ch1a/src/Main.java ../../ch1b/src/Main.java
-ln -s ../../ch1a/src/Person.java ../../ch1b/src/Person.java
+ln -s ../../ch1a/src/Main.java ../src/Main.java
+ln -s ../../ch1a/src/Person.java ../src/Person.java
 
 cd ../src
 javac Main.java
