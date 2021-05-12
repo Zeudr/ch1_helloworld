@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd ../src
-javac Main.java
+cd ../tmp
+javac -d . ../src/*.java
