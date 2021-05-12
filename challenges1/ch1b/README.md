@@ -1,10 +1,7 @@
 # CH - 1B
 
 # requirements
-you need to know your local mysql connection parameters -> 
-(db-name,
-db-user,
-db-password)
+none
 
 # compile
 execute compile.sh
