@@ -31,7 +31,7 @@ public class PersonService {
 
     private void prepDb(Statement statement) {
         String dropTable = "DROP TABLE IF EXISTS Person";
-        String createTable = "CREATE TABLE Person (Id int NOT NULL IDENTITY, Firstname varchar(255) NOT NULL, Lastname varchar(255) NOT NULL, PRIMARY KEY (Id));";
+        String createTable = "CREATE TABLE Person(Id int NOT NULL IDENTITY, Firstname varchar(255) NOT NULL, Lastname varchar(255) NOT NULL, PRIMARY KEY (Id));";
 
         try {
             statement.execute(dropTable);
