@@ -1,4 +1,4 @@
-# DareIT Challenges! # 
+# Fullstack DevOps Challenges! # 
  
  - [ ] Challenge 1  
     - [x] CH 1A ---> challenges1/ch1a/readme.md
