@@ -4,6 +4,13 @@
 * don’t forget the readme file with detailed instructions
 
 # requirements
+mysqldb:
+you need to know your local mysql connection parameters -> 
+(db-name,
+db-user,
+db-password)
+
+hsqldb: 
 none
 
 # compile

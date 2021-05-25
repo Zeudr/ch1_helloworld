@@ -32,14 +32,13 @@ public class PersonService {
             System.out.println("MYSQLDB --> y");
             System.out.println("HSQLDB --> n");
             answer = input.nextLine();
-        } while (!answer.equals("y") || !answer.equals("n"));
+        } while (!(answer.equals("y") || answer.equals("n")));
 
-        if (answer.equals("1")) {
+        if (answer.equals("y")) {
            return true;
-        } else if (answer.equals("2")) {
+        } else {
            return false;
         }
-        return null;
     }
 
     private IllegalStateException checkDbConnection(Statement statement) {
