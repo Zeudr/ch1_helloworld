@@ -1,12 +1,12 @@
 # Fullstack DevOps Challenges! # 
  
- - [ ] Challenge 1  
-    - [x] CH 1A ---> challenges1/ch1a/readme.md
-    - [x] CH 1B ---> challenges1/ch1b/readme.md
-    - [ ] CH 1C
+ - [X] Challenge 1  
+    - [x] CH 1A ---> challenge1/ch1a/readme.md
+    - [x] CH 1B ---> challenge1/ch1b/readme.md
+    - [X] CH 1C ---> challenge1/ch1c/readme.md
 
 - [ ] Challenge 2  
-    - [ ] CH 2A
+    - [X] CH 2A ---> challenge2/ch2a/readme.md
     - [ ] CH 2B
 
 - [ ] Challenge 3
