@@ -21,7 +21,7 @@ public class PersonService extends BaseService {
         savePerson(statement);
     }
 
-    private Boolean chooseDb() {
+    private boolean chooseDb() {
         Scanner input = new Scanner(System.in);
         String answer;
         do {

@@ -49,8 +49,8 @@ public class BaseService {
 
     protected Statement makeHSQLDBConnection() {
         try {
-            Connection mysql = DriverManager.getConnection("jdbc:hsqldb:file:ch1b", "root", "admin");
-            return mysql.createStatement();
+            Connection hsql = DriverManager.getConnection("jdbc:hsqldb:file:ch1b", "root", "admin");
+            return hsql.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
         }
