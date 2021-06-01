@@ -3,9 +3,6 @@ import java.util.Scanner;
 
 public class PersonService extends BaseService {
 
-    public PersonService() {
-    }
-
     public void process() {
         Statement statement;
         if (chooseDb()) {
@@ -31,11 +28,7 @@ public class PersonService extends BaseService {
             answer = input.nextLine();
         } while (!(answer.equals("y") || answer.equals("n")));
 
-        if (answer.equals("y")) {
-           return true;
-        } else {
-           return false;
-        }
+        return answer.equals("y");
     }
 
 }

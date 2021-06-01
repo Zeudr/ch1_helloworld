@@ -6,9 +6,6 @@ import java.util.Scanner;
 
 public class BaseService {
 
-    public BaseService() {
-    }
-
     protected void checkDbConnection(Statement statement) {
         if (statement == null) {
             throw new IllegalStateException("Error --> DB-Connection Failed");
