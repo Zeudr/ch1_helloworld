@@ -1,12 +1,17 @@
-import java.sql.Statement;
+import java.util.Scanner;
 
-public class PersonService extends BaseService {
+public class PersonService {
 
-    public void process() {
-        Statement statement = makeMYSQLDBConnection();
-        checkDbConnection(statement);
-        prepMYSQLDB(statement);
-        savePerson(statement);
+    protected String getUserValue(String text) {
+        Scanner input = new Scanner(System.in);
+        String s;
+
+        do {
+            System.out.println(text);
+            s = input.nextLine();
+        } while (s.equals(""));
+
+        return s;
     }
 
 }

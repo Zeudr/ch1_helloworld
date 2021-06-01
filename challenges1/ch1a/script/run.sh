@@ -1,4 +1,6 @@
 #!/bin/bash
 
-cd ../tmp
-java -cp ../lib/mysql-connector-java-8.0.23.jar:. Main
+BASEDIR=$(realpath "$(dirname "$(readlink "$0")")")
+
+cd "$BASEDIR"/tmp
+java -cp "$BASEDIR"/lib/*:. Main
