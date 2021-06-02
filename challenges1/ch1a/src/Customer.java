@@ -1,12 +1,12 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Person {
+public class Customer {
 
     private String firstname;
     private String lastname;
 
-    public Person(ResultSet resultSet) throws SQLException {
+    public Customer(ResultSet resultSet) throws SQLException {
         if(resultSet.next()) {
             firstname = resultSet.getString("Firstname");
             lastname = resultSet.getString("Lastname");

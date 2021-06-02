@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class PersonRepository {
+public class CustomerRepository {
 
     protected void checkDbConnection(Statement statement) {
         if (statement == null) {
@@ -30,8 +30,8 @@ public class PersonRepository {
             keyWord = "IDENTITY";
         }
 
-        String dropTable = "DROP TABLE IF EXISTS Person";
-        String createTable = String.format("CREATE TABLE Person(Id int NOT NULL IDENTITY, Firstname varchar(255) NOT NULL, Lastname varchar(255) NOT NULL, PRIMARY KEY (Id));", keyWord);
+        String dropTable = "DROP TABLE IF EXISTS Customer";
+        String createTable = String.format("CREATE TABLE Customer(Id int NOT NULL %s, Firstname varchar(255) NOT NULL, Lastname varchar(255) NOT NULL, PRIMARY KEY (Id));", keyWord);
 
         try {
             statement.execute(dropTable);
@@ -42,7 +42,7 @@ public class PersonRepository {
     }
 
     protected void savePerson(Statement statement, String firstname, String lastname) {
-        String insertQuery = String.format("INSERT INTO Person(Firstname, Lastname) VALUES('%s', '%s');", firstname, lastname);
+        String insertQuery = String.format("INSERT INTO Customer(Firstname, Lastname) VALUES('%s', '%s');", firstname, lastname);
 
         try {
             statement.executeUpdate(insertQuery);
@@ -52,11 +52,11 @@ public class PersonRepository {
     }
 
     protected void getPerson(Statement statement, String firstname, String lastname) {
-        String selectQuery = String.format("SELECT * FROM Person p WHERE p.Firstname LIKE '%s' AND p.Lastname LIKE '%s';", firstname, lastname);
+        String selectQuery = String.format("SELECT * FROM Customer c WHERE c.Firstname LIKE '%s' AND c.Lastname LIKE '%s';", firstname, lastname);
 
         try {
-            Person person = new Person(statement.executeQuery(selectQuery));
-            System.out.println(String.format("Saved in DB --> %s %s", person.getFirstname(), person.getLastname()));
+            Customer customer = new Customer(statement.executeQuery(selectQuery));
+            System.out.println(String.format("Saved in DB --> %s %s", customer.getFirstname(), customer.getLastname()));
         } catch (SQLException e) {
             e.printStackTrace();
         }

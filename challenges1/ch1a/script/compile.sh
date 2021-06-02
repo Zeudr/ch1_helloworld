@@ -1,11 +1,9 @@
 #!/bin/bash
 
-# ln -s ../../../challenges1/ch1a/src/Main.java ../src/Main.java
-# ln -s ../../ch1a/src/Person.java ../src/Person.java
-# ln -s ../../ch1a/src/PersonService.java ../src/PersonService.java
-# ln -s ../../ch1a/src/PersonRepository.java ../src/PersonRepository.java
-# ln -s ../../ch1a/script/compile.sh ../script/compile.sh
-# ln -s ../../ch1a/script/run.sh ../script/run.sh
+ ln -s ../../ch1a/src/Customer.java ../src/Customer.java
+ ln -s ../../ch1a/src/CustomerService.java ../src/CustomerService.java
+ ln -s ../../ch1a/src/CustomerRepository.java ../src/CustomerRepository.java
+ ln -s ../../ch1a/src/CustomerController.java ../src/CustomerController.java
 
 BASEDIR=$(realpath "$(dirname "$(readlink "$0")")")
 

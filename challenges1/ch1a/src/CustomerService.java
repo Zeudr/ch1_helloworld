@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class PersonService {
+public class CustomerService {
 
     protected String getUserValue(String text) {
         Scanner input = new Scanner(System.in);
