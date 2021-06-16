@@ -1,7 +1,5 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.IOException;
+import java.sql.*;
 
 public class CustomerRepository {
 
@@ -55,11 +53,23 @@ public class CustomerRepository {
         String selectQuery = String.format("SELECT * FROM Customer c WHERE c.Firstname LIKE '%s' AND c.Lastname LIKE '%s';", firstname, lastname);
 
         try {
-            Customer customer = new Customer(statement.executeQuery(selectQuery));
+            Customer customer = createCustomer(statement.executeQuery(selectQuery));
             System.out.println(String.format("Saved in DB --> %s %s", customer.getFirstname(), customer.getLastname()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    private Customer createCustomer(ResultSet resultSet) throws SQLException {
+        String firstname = "";
+        String lastname = "";
+
+        if(resultSet.next()) {
+            firstname = resultSet.getString("Firstname");
+            lastname = resultSet.getString("Lastname");
+        }
+
+        return new Customer(firstname, lastname);
     }
 
 }
