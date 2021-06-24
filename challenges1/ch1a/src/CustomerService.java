@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class CustomerService {
 
-    protected String getUserValue(String text) {
+    public String getUserValue(String text) {
         Scanner input = new Scanner(System.in);
         String s;
 
