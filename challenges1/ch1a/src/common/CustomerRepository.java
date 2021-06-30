@@ -1,17 +1,21 @@
+package common;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CustomerRepository extends AbstractDB {
+public class CustomerRepository {
+
+    DBapi api = new DBapi();
 
     public void saveCustomer(String firstname, String lastname) {
-        save(String.format("INSERT INTO Customer(Firstname, Lastname) VALUES('%s', '%s');", firstname, lastname));
+        api.save(String.format("INSERT INTO common.Customer(Firstname, Lastname) VALUES('%s', '%s');", firstname, lastname));
     }
 
     public void getCustomer(String firstname, String lastname) {
-        String query = String.format("SELECT * FROM Customer c WHERE c.Firstname LIKE '%s' AND c.Lastname LIKE '%s';", firstname, lastname);
+        String query = String.format("SELECT * FROM common.Customer c WHERE c.Firstname LIKE '%s' AND c.Lastname LIKE '%s';", firstname, lastname);
 
         try {
-            Customer customer = createCustomer(statement.executeQuery(query));
+            Customer customer = createCustomer(api.statement.executeQuery(query));
             System.out.println(String.format("Saved in DB --> %s %s", customer.getFirstname(), customer.getLastname()));
         } catch (SQLException e) {
             e.printStackTrace();

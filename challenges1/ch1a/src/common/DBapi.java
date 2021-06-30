@@ -1,11 +1,11 @@
+package common;
+
 import java.sql.*;
 
-public abstract class AbstractDB {
+public class DBapi {
 
     Statement statement;
 
-    protected AbstractDB() {
-    }
 
     public void makeDBConnection(String url, String user, String password) {
         try {
@@ -23,7 +23,7 @@ public abstract class AbstractDB {
     }
 
     public void prepDB(String query) {
-        String dropTable = "DROP TABLE IF EXISTS Customer";
+        String dropTable = "DROP TABLE IF EXISTS common.Customer";
 
         execute(dropTable);
         execute(query);
