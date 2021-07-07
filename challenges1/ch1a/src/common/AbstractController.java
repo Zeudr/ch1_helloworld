@@ -9,6 +9,8 @@ public abstract class AbstractController {
     private String firstname;
     private String lastname;
 
+    public String url;
+
     private final CustomerService customerService;
     private final CustomerRepository customerRepository;
 
@@ -17,7 +19,7 @@ public abstract class AbstractController {
         this.customerRepository = new CustomerRepository();
     }
 
-    public void process(String url) {
+    public void process() {
         getConnectionInformation();
 
         DBapi api = new DBapi();
