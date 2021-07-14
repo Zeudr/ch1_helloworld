@@ -1,19 +1,24 @@
 package common;
 
-import java.util.Scanner;
 
 public class CustomerService {
 
-    public String getUserValue(String text) {
-        Scanner input = new Scanner(System.in);
-        String s;
+    private final MySqlConnection mySqlConnection;
+    private final PresentationLayer presentationLayer;
 
-        do {
-            System.out.println(text);
-            s = input.nextLine();
-        } while (s.equals(""));
+    public CustomerService() {
+        this.mySqlConnection = new MySqlConnection();
+        this.presentationLayer = new PresentationLayer();
+    }
 
-        return s;
+    public void process() {
+        presentationLayer.getConnectionInformation();
+        mySqlConnection.connect(presentationLayer.getDbName(), presentationLayer.getDbUser(), presentationLayer.getDbPw());
+
+        presentationLayer.getPersonInformation();
+        mySqlConnection.saveCustomer(presentationLayer.getFirstname(), presentationLayer.getLastname());
+
+        mySqlConnection.getCustomer(presentationLayer.getFirstname(), presentationLayer.getLastname());
     }
 
 }

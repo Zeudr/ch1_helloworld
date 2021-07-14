@@ -1,3 +1,3 @@
 #!/bin/bash
 
-javac -sourcepath src/common/*.java -d tmp src/*.java
+javac -d tmp src/*.java src/common/*.java

@@ -20,9 +20,8 @@ db-user,
 db-password)
 
 # compile
-execute script/compile.sh
+execute 'script/compile.sh'
 
 # run
 execute script/run.sh
 
-hsql db stat file inmemory machen

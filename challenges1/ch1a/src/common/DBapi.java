@@ -2,10 +2,12 @@ package common;
 
 import java.sql.*;
 
-public class DBapi {
+public abstract class DBapi {
 
-    Statement statement;
+    public Statement statement;
 
+
+    public abstract String tableSyntax();
 
     public void makeDBConnection(String url, String user, String password) {
         try {
@@ -23,18 +25,27 @@ public class DBapi {
     }
 
     public void prepDB(String query) {
-        String dropTable = "DROP TABLE IF EXISTS common.Customer";
+        String dropTable = "DROP TABLE IF EXISTS Customer";
 
         execute(dropTable);
         execute(query);
     }
 
-    public void execute(String query) {
+    private void execute(String query) {
         try {
             statement.execute(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public ResultSet executeQuery(String query) {
+        try {
+          return statement.executeQuery(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void save(String query) {
@@ -43,6 +54,14 @@ public class DBapi {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void showDatabase() {
+        // for debugging: (bp must not suspend all threads)
+        // System.setProperty("java.awt.headless", "false");
+        // DatabaseManagerSwing.main(new String[]{
+        //         "--url", "jdbc:hsqldb:mem:carvoInMem", "--noexit"
+        // });
     }
 
 }
