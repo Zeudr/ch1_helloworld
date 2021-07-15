@@ -3,22 +3,22 @@ package common;
 
 public class CustomerService {
 
-    private final MySqlConnection mySqlConnection;
+    private final IDBApi mySqlApi;
     private final PresentationLayer presentationLayer;
 
-    public CustomerService() {
-        this.mySqlConnection = new MySqlConnection();
+    public CustomerService(IDBApi idbApi) {
+        this.mySqlApi = idbApi;
         this.presentationLayer = new PresentationLayer();
     }
 
     public void process() {
-        presentationLayer.getConnectionInformation();
-        mySqlConnection.connect(presentationLayer.getDbName(), presentationLayer.getDbUser(), presentationLayer.getDbPw());
+        DBConnection dbConnection = PresentationLayer.getConnectionInformation();
+        mySqlApi.connect(dbConnection.getDbName(), dbConnection.getDbName(), dbConnection.getDbPw());
 
-        presentationLayer.getPersonInformation();
-        mySqlConnection.saveCustomer(presentationLayer.getFirstname(), presentationLayer.getLastname());
+        Customer customer = PresentationLayer.getPersonInformation();
+        mySqlApi.saveCustomer(customer.getFirstname(), customer.getLastname());
 
-        mySqlConnection.getCustomer(presentationLayer.getFirstname(), presentationLayer.getLastname());
+        mySqlApi.getCustomer(customer.getFirstname(), customer.getLastname());
     }
 
 }

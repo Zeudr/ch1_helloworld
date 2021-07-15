@@ -5,26 +5,22 @@ import java.util.Scanner;
 
 public class PresentationLayer {
 
-    private String dbName;
-    private String dbUser;
-    private String dbPw;
+    public static DBConnection getConnectionInformation() {
+        String dbName = getUserValue("Please input your DB-Name: ");
+        String dbUser = getUserValue("Please input your DB-User: ");
+        String dbPw = getUserValue("Please input your DB-Password: ");
 
-    private String firstname;
-    private String lastname;
-
-
-    public void getConnectionInformation() {
-        dbName = getUserValue("Please input your DB-Name: ");
-        dbUser = getUserValue("Please input your DB-User: ");
-        dbPw = getUserValue("Please input your DB-Password: ");
+        return new DBConnection(dbName, dbUser, dbPw);
     }
 
-    public void getPersonInformation() {
-        firstname = getUserValue("Please input your firstname: ");
-        lastname = getUserValue("Please input your lastname: ");
+    public static Customer getPersonInformation() {
+        String firstname = getUserValue("Please input your firstname: ");
+        String lastname = getUserValue("Please input your lastname: ");
+
+        return new Customer(firstname, lastname);
     }
 
-    private String getUserValue(String text) {
+    private static String getUserValue(String text) {
         Scanner input = new Scanner(System.in);
         String s;
 
@@ -34,26 +30,6 @@ public class PresentationLayer {
         } while (s.equals(""));
 
         return s;
-    }
-
-    public String getDbName() {
-        return dbName;
-    }
-
-    public String getDbUser() {
-        return dbUser;
-    }
-
-    public String getDbPw() {
-        return dbPw;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
     }
 
 }
