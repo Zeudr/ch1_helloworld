@@ -1,26 +1,19 @@
 import common.CustomerService;
+import common.PresentationLayer;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        CustomerController customerController = new CustomerController();
-        customerController.url = chooseDb();
-        customerController.process();
-    }
+        String answer = PresentationLayer.getUserValue("Change DB(y/n)? (MYSQLDB --> y | HSQLDB --> n)");
 
-    protected static String chooseDb() {
-        CustomerService customerService = new CustomerService();
-        String answer = customerService.getUserValue("Change DB(y/n)? (MYSQLDB --> y | HSQLDB --> n)");
-
-        String url;
+        CustomerService customerService;
         if (answer.equals("y")) {
-            url = "jdbc:mysql://127.0.0.1:3306/%s";
+            customerService = new CustomerService(new MySqlApi());
         } else {
-            url = "jdbc:hsqldb:file:%s";
+            customerService = new CustomerService(new HSqlApi());
         }
-
-        return url;
+        customerService.process();
     }
 
 }

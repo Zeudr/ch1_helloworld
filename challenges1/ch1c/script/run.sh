@@ -1,6 +1,5 @@
 #!/bin/bash
 
-BASEDIR=$(realpath "$(dirname "$(readlink "$0")")")
+cd tmp
 
-cd "$BASEDIR"/tmp
-java -cp "$BASEDIR"/lib/*:. Main
+java -cp ../lib/*:. Main

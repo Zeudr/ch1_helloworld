@@ -20,7 +20,7 @@ public class PresentationLayer {
         return new Customer(firstname, lastname);
     }
 
-    private static String getUserValue(String text) {
+    public static String getUserValue(String text) {
         Scanner input = new Scanner(System.in);
         String s;
 
