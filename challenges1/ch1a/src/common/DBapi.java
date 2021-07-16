@@ -56,6 +56,18 @@ public abstract class DBapi {
         }
     }
 
+    protected Customer createCustomer(ResultSet resultSet) throws SQLException {
+        String firstname = "";
+        String lastname = "";
+
+        if(resultSet.next()) {
+            firstname = resultSet.getString("Firstname");
+            lastname = resultSet.getString("Lastname");
+        }
+
+        return new Customer(firstname, lastname);
+    }
+
     public void showDatabase() {
         // for debugging: (bp must not suspend all threads)
         // System.setProperty("java.awt.headless", "false");

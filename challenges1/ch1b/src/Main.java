@@ -1,9 +1,11 @@
+import common.CustomerService;
+
+
 public class Main {
 
     public static void main(String[] args) {
-        CustomerController customerController = new CustomerController();
-        customerController.url = "jdbc:hsqldb:file:%s";
-        customerController.process();
+        CustomerService customerService = new CustomerService(new HSqlApi());
+        customerService.process();
     }
 
 }
