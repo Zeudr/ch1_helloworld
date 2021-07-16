@@ -9,10 +9,10 @@
 * don’t forget the readme file with detailed instructions
 
 # requirements
-none
+execute `script/symlinks.sh`
 
 # compile
-execute script/compile.sh
+execute `script/compile.sh`
 
 # run
-execute script/run.sh
+execute `script/run.sh`

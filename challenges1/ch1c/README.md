@@ -4,6 +4,8 @@
 * don’t forget the readme file with detailed instructions
 
 # requirements
+execute `script/symlinks.sh`
+
 mysqldb:
 you need to know your local mysql connection parameters -> 
 (db-name,
@@ -14,7 +16,7 @@ hsqldb:
 none
 
 # compile
-execute script/compile.sh
+execute `script/compile.sh`
 
 # run
-execute script/run.sh
+execute `script/run.sh`
