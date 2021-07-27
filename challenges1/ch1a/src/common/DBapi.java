@@ -8,8 +8,6 @@ public abstract class DBapi {
     private Connection connection;
 
 
-    public abstract String tableSyntax();
-
     public void makeDBConnection(String url, String user, String password) {
         try {
             connection = DriverManager.getConnection(url, user, password);
@@ -24,12 +22,11 @@ public abstract class DBapi {
         }
     }
 
-    public void createCustomerTable(String query) {
-        execute("DROP TABLE IF EXISTS Customer");
-        execute(query);
+    public void dropTableIfExists(String tableName) {
+        execute(String.format("DROP TABLE IF EXISTS %s", tableName));
     }
 
-    private void execute(String query) {
+    public void execute(String query) {
         try {
             connection.createStatement().execute(query);
         } catch (SQLException e) {

@@ -1,11 +1,20 @@
 package common;
 
+import java.sql.ResultSet;
+
+
 public interface IDBApi {
 
-    void connect(String dbName, String dbUser, String dbPw);
+    void connect(String dbName, String dbUser, String dbPassword);
 
-    void saveCustomer(String firstname, String lastname);
+    void checkDbConnection();
 
-    Customer getCustomer(String firstname, String lastname);
+    void createCustomerTable();
+
+    void dropTableIfExists(String tableName);
+
+    void executeUpdate(String query);
+
+    ResultSet executeQuery(String query);
 
 }
