@@ -2,8 +2,8 @@ package common;
 
 public class Customer {
 
-    private String firstname;
-    private String lastname;
+    private final String firstname;
+    private final String lastname;
 
     public Customer(String firstname, String lastname) {
         this.firstname = firstname;

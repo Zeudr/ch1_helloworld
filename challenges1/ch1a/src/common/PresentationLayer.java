@@ -20,6 +20,10 @@ public class PresentationLayer {
         return new Customer(firstname, lastname);
     }
 
+    public static void printPersonInformation(Customer customer) {
+        System.out.println(String.format("Saved in DB --> %s %s", customer.getFirstname(), customer.getLastname()));
+    }
+
     public static String getUserValue(String text) {
         Scanner input = new Scanner(System.in);
         String s;

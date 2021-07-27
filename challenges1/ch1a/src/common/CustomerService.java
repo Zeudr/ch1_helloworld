@@ -16,7 +16,8 @@ public class CustomerService {
         Customer customer = PresentationLayer.getPersonInformation();
         mySqlApi.saveCustomer(customer.getFirstname(), customer.getLastname());
 
-        mySqlApi.getCustomer(customer.getFirstname(), customer.getLastname());
+        Customer customerFromDB = mySqlApi.getCustomer(customer.getFirstname(), customer.getLastname());
+        PresentationLayer.printPersonInformation(customerFromDB);
     }
 
 }

@@ -6,6 +6,6 @@ public interface IDBApi {
 
     void saveCustomer(String firstname, String lastname);
 
-    void getCustomer(String firstname, String lastname);
+    Customer getCustomer(String firstname, String lastname);
 
 }

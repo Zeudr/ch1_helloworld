@@ -1,23 +1,20 @@
 import common.Customer;
-import common.CustomerRepository;
 import common.DBapi;
 import common.IDBApi;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
 public class MySqlApi extends DBapi implements IDBApi {
 
-    private final CustomerRepository customerRepository;
 
+    public MySqlApi() {
+    }
 
     @Override
     public String tableSyntax() {
         return "CREATE TABLE Customer(Id int NOT NULL AUTO_INCREMENT, Firstname varchar(255) NOT NULL, Lastname varchar(255) NOT NULL, PRIMARY KEY (Id));";
-    }
-
-    public MySqlApi() {
-        this.customerRepository = new CustomerRepository();
     }
 
     @Override
@@ -25,22 +22,23 @@ public class MySqlApi extends DBapi implements IDBApi {
         makeDBConnection(String.format("jdbc:mysql://127.0.0.1:3306/%s", dbName), dbUser, dbPw);
         checkDbConnection();
 
-        prepDB(tableSyntax());
+        createCustomerTable(tableSyntax());
     }
 
     @Override
     public void saveCustomer(String firstname, String lastname) {
-        save(customerRepository.saveCustomer(firstname, lastname));
+        executeUpdate(String.format("INSERT INTO Customer(Firstname, Lastname) VALUES('%s', '%s');", firstname, lastname));
     }
 
     @Override
-    public void getCustomer(String firstname, String lastname){
+    public Customer getCustomer(String firstname, String lastname){
         try {
-            Customer customer = createCustomer(executeQuery(customerRepository.getCustomer(firstname, lastname)));
-            System.out.println(String.format("Saved in DB --> %s %s", customer.getFirstname(), customer.getLastname()));
+            ResultSet res = executeQuery(String.format("SELECT * FROM Customer c WHERE c.Firstname LIKE '%s' AND c.Lastname LIKE '%s';", firstname, lastname));
+            return new Customer(res.getString("Firstname"), res.getString("Lastname"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
 }
