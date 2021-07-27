@@ -33,8 +33,10 @@ public class HSqlApi extends DBapi implements IDBApi {
     @Override
     public Customer getCustomer(String firstname, String lastname){
         try {
-            ResultSet res = executeQuery(String.format("SELECT * FROM Customer c WHERE c.Firstname LIKE '%s' AND c.Lastname LIKE '%s';", firstname, lastname));
-            return new Customer(res.getString("Firstname"), res.getString("Lastname"));
+            ResultSet resultSet = executeQuery(String.format("SELECT * FROM Customer c WHERE c.Firstname LIKE '%s' AND c.Lastname LIKE '%s';", firstname, lastname));
+            if (resultSet.next()) {
+                return new Customer(resultSet.getString("Firstname"), resultSet.getString("Lastname"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
