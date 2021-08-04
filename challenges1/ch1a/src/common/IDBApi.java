@@ -9,7 +9,7 @@ public interface IDBApi {
 
     void checkDbConnection();
 
-    void createCustomerTable();
+    void createCustomerTable(); // TODO: IDBApi can not have realtion to customer
 
     void dropTableIfExists(String tableName);
 

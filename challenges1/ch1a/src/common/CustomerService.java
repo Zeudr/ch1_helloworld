@@ -15,7 +15,7 @@ public class CustomerService {
 
     public void process() {
         DBConnection dbConnection = PresentationLayer.getConnectionInformation();
-        connect(dbConnection);
+        connect(dbConnection); // TODO: catch ex and end program with meaningful message
 
         dropCustomerTable();
         idbApi.createCustomerTable();
@@ -29,7 +29,7 @@ public class CustomerService {
 
     public void connect(DBConnection dbConnection) {
         idbApi.connect(dbConnection.getDbName(), dbConnection.getDbUser(), dbConnection.getDbPw());
-        idbApi.checkDbConnection();
+        idbApi.checkDbConnection(); // TODO: move to makeDBConnection
     }
 
     public void saveCustomer(String firstname, String lastname) {

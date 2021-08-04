@@ -7,6 +7,11 @@ public abstract class DBapi {
 
     private Connection connection;
 
+//    static class DBConnectionData() {
+//        String url;
+//        String user;
+//        String password;
+//    }
 
     public void makeDBConnection(String url, String user, String password) {
         try {
@@ -15,6 +20,8 @@ public abstract class DBapi {
             e.printStackTrace();
         }
     }
+
+//    protected abstract DBConnectionData getDBConnectionData();
 
     public void checkDbConnection() {
         if (connection == null) {
