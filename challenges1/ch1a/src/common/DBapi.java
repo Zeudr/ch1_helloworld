@@ -3,25 +3,14 @@ package common;
 import java.sql.*;
 
 
-public abstract class DBapi {
+public abstract class DBapi implements IDBApi {
 
     private Connection connection;
 
-//    static class DBConnectionData() {
-//        String url;
-//        String user;
-//        String password;
-//    }
-
-    public void makeDBConnection(String url, String user, String password) {
-        try {
-            connection = DriverManager.getConnection(url, user, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void makeDBConnection(DBConnection dbConnection) throws Exception {
+            connection = DriverManager.getConnection(dbConnection.getDbName(), dbConnection.getDbUser(), dbConnection.getDbPw());
+            checkDbConnection();
     }
-
-//    protected abstract DBConnectionData getDBConnectionData();
 
     public void checkDbConnection() {
         if (connection == null) {

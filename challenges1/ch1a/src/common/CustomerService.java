@@ -9,27 +9,27 @@ public class CustomerService {
 
     private final IDBApi idbApi;
 
+
     public CustomerService(IDBApi idbApi) {
         this.idbApi = idbApi;
     }
 
     public void process() {
-        DBConnection dbConnection = PresentationLayer.getConnectionInformation();
-        connect(dbConnection); // TODO: catch ex and end program with meaningful message
+        try {
+            DBConnection dbConnection = PresentationLayer.getConnectionInformation();
+            idbApi.connect(dbConnection);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
 
         dropCustomerTable();
-        idbApi.createCustomerTable();
+        idbApi.createTable();
 
         Customer customer = PresentationLayer.getPersonInformation();
         saveCustomer(customer.getFirstname(), customer.getLastname());
 
         Customer customerFromDB = getCustomer(customer.getFirstname(), customer.getLastname());
         PresentationLayer.printPersonInformation(customerFromDB);
-    }
-
-    public void connect(DBConnection dbConnection) {
-        idbApi.connect(dbConnection.getDbName(), dbConnection.getDbUser(), dbConnection.getDbPw());
-        idbApi.checkDbConnection(); // TODO: move to makeDBConnection
     }
 
     public void saveCustomer(String firstname, String lastname) {

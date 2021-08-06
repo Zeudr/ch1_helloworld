@@ -5,11 +5,11 @@ import java.sql.ResultSet;
 
 public interface IDBApi {
 
-    void connect(String dbName, String dbUser, String dbPassword);
+    void connect(DBConnection dbConnection) throws Exception;
 
     void checkDbConnection();
 
-    void createCustomerTable(); // TODO: IDBApi can not have realtion to customer
+    void createTable();
 
     void dropTableIfExists(String tableName);
 
