@@ -10,7 +10,7 @@ public class HSqlApi extends DBapi {
 
     @Override
     public void connect(DBConnection dbConnection) throws Exception {
-        makeDBConnection(dbConnection);
+        makeDBConnection(new DBConnection(String.format("jdbc:hsqldb:mem:%s", dbConnection.getDbName()), dbConnection.getDbUser(), dbConnection.getDbPw()));
     }
 
     public void showDatabase() {

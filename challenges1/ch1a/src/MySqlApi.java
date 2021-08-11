@@ -11,7 +11,7 @@ public class MySqlApi extends DBapi {
 
     @Override
     public void connect(DBConnection dbConnection) throws Exception {
-        makeDBConnection(dbConnection);
+        makeDBConnection(new DBConnection(String.format("jdbc:mysql://127.0.0.1:3306/%s", dbConnection.getDbName()), dbConnection.getDbUser(), dbConnection.getDbPw()));
     }
 
 }
